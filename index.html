@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NTVFLIX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="wrap">
+            <div class="left">
+                <a href="#">
+                    <h1>NTVFLIX</h1>
+                </a>
+                <ul class="nav-items">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shows</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">New & Popular</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <input id="q" type="search" placeholder="Leita..." autocomplete="off" aria-label="Search movies" />
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+        <!-- SLIDER -->
+
+        <Section class="img-wrap">
+
+            <div class="swiper mySwiper">
+
+                <div class="swiper-wrapper"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+
+            </div>
+
+        </Section>
+
+        <Section class="img-wrap">
+            <div class="featured-movies">
+                <h2>Featured Movies</h2>
+            </div>
+            <div class="action-movies">
+                <h2>Action Movies</h2>
+            </div>
+            <div class="horror-movies">
+                <h2>Horror Movies</h2>
+            </div>
+            <div class="comedy-movies">
+                <h2>Comedy Movies</h2>
+            </div>
+            <div class="sci-fi-movies">
+                <h2>Sci-Fi Movies</h2>
+            </div>
+            <div id="empty" class="empty" hidden>Engin mynd fannst.</div>
+        </Section>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        window.swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <script type="module" src="index.js"></script>
+    <footer class="footer">
+        <div class="wrap footer-inner">
+            <div>© 2025 NTVFLIX</div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
