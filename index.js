@@ -1,10 +1,15 @@
 import { MOVIES, SLIDER_MOVIES } from './movies.js';
+
+// Fallback poster mynd ef engin er til staðar
 const FALLBACK_POSTER =
   'https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SY679_.jpg';
+
+// Grabbing á elementum úr DOM
 const grid = document.getElementById('grid');
 const empty = document.getElementById('empty');
 const q = document.getElementById('q');
 
+// Fall til að búa til card element fyrir myndir í grid
 function card(m) {
   const li = document.createElement('article');
   li.className = 'card';
@@ -22,6 +27,7 @@ function card(m) {
   return li;
 }
 
+// Fall til að búa til slide element fyrir slider
 function slide(m) {
   const div = document.createElement('div');
   div.className = 'swiper-slide';
@@ -43,7 +49,7 @@ function slide(m) {
   return div;
 }
 
-// simple helper to render a list into a given section selector
+// Hjálpar fall til að rendera lista af myndum í gefinn selector
 function renderTo(selector, list) {
   const container = document.querySelector(selector);
   if (!container) return;
@@ -63,6 +69,7 @@ function renderTo(selector, list) {
   list.forEach((m) => gridEl.appendChild(card(m)));
 }
 
+// Fall til að rendera allar myndir
 function renderSections(sourceList) {
   const FEATURED_IDS = new Set(['1899', 'Black_Panther', 'john_wick', 'Thor']);
   const isFeatured = (m) => m.featured === true || FEATURED_IDS.has(m.id);
@@ -90,6 +97,7 @@ function renderSections(sourceList) {
   if (empty) empty.hidden = sourceList.length !== 0;
 }
 
+// fall til að fylla slider með myndum
 function populateSlider(list) {
   const wrapper = document.querySelector('.swiper-wrapper');
   if (!wrapper) return;
@@ -99,6 +107,7 @@ function populateSlider(list) {
     window.swiper.update();
   }
 
+  // Bætum event listener við slider til að handle-a play takkann
   wrapper.addEventListener('click', (e) => {
     const target = e.target;
     if (target && target.matches('button.btn-watch')) {
@@ -108,11 +117,13 @@ function populateSlider(list) {
   });
 }
 
+//Þetta fall loadar öllu efni
 function load() {
   populateSlider(SLIDER_MOVIES);
   renderSections(MOVIES);
 }
 
+// Bætum event listener við search input til að filter-a myndir
 q.addEventListener('input', () => {
   const term = q.value.trim().toLowerCase();
   if (!term) return renderSections(MOVIES);
@@ -120,4 +131,5 @@ q.addEventListener('input', () => {
   renderSections(filtered);
 });
 
+// Hér köllum við í load fallið til að byrja að load-a efninu við hverja hleðslu síðunnar
 load();
