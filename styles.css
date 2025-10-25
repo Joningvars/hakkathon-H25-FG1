@@ -23,6 +23,8 @@
             justify-content: space-between;
         }
 
+        
+
         nav a{
             text-decoration: none;
             color: var(--accent);
@@ -240,3 +242,18 @@
         }
         .footer a { color: var(--muted); text-decoration: none; }
         .footer a:hover { color: var(--txt); }
+
+
+            @media (max-width: 768px) {
+                nav {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .right {
+                    width: 100%;
+                }
+                input[type="search"] {
+                    width: 100%;
+                }
+            }
